@@ -1,8 +1,8 @@
 const {Pool} = require('pg');
 
-const {user, host, database, password, port} = require('../db_config/db_config.js');
-
-const pool = new Pool({user,host,database,password,port});
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+})
 
 pool.on('connect', () => {
     console.log('Connected to the db');
@@ -10,7 +10,6 @@ pool.on('connect', () => {
 
 pool.on('remove', () => {
     console.log('Removed connection to the db');
-    // process.exit(0);
 });
 
 module.exports = pool;
