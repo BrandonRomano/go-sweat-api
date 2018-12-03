@@ -1,1 +1,4 @@
-db_config/
+.env*
+!.env.sample
+ash_modules
+node_modules
